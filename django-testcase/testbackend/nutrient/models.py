@@ -22,6 +22,9 @@ class Feed(models.Model):
     calcium = models.CharField("칼슘", max_length=1000)
     phosphorus = models.CharField("인", max_length=1000)
 
+    def __str__(self):
+        return self.name
+
 class Snack(models.Model):
     
     class Meta:
@@ -47,4 +50,7 @@ class Nutrient(models.Model):
     crude_ash = models.CharField("조회분", max_length=1000)
     calcium = models.CharField("칼슘", max_length=1000)
     phosphorus = models.CharField("인", max_length=1000)
+
+    def __str__(self):
+        return self.name
     
