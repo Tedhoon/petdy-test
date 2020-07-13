@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { Chart } from 'react-chartjs-2';
 import { BACKEND } from '../config';
 import axios from 'axios';
@@ -30,13 +30,13 @@ const useGraph = () => {
                         'rgba(54, 162, 235, 0.2)',
                     ],
                     borderColor: [
-                        'rgba(255,99,132,1)',
+                        'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
                         'rgba(255, 206, 86, 1)',
                         'rgba(75, 192, 192, 1)',
                         'rgba(153, 102, 255, 1)',
                         'rgba(255, 159, 64, 1)',
-                        'rgba(255,99,132,1)',
+                        'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
                     ],
                     borderWidth: 1
@@ -158,6 +158,10 @@ function Graph () {
         const { id } = event.target; 
         const object = await filterNutrientData(id)
         console.log(object)
+        // 요기서 쌓이는 로직을 구현해야할 것 같습니드아~
+        // useState로 배열을 하나 만들어야겠군요!
+        // + - 를 구분해서 넣어야하나..싶네
+        // 그리고 0개 일때 빼면 안되게 하기!
         const { 
             calorie,
             moisture,
@@ -168,7 +172,17 @@ function Graph () {
             calcium,
             phosphorus
             } = object[0];
-        setGraphData([calorie/100, moisture, crude_protein, crude_fat, crude_fiber, crude_ash, calcium, phosphorus])
+
+        setGraphData([
+            calorie, // 단위가 달라서 이부분도 해결해야함
+            moisture,
+            crude_protein,
+            crude_fat,
+            crude_fiber,
+            crude_ash,
+            calcium,
+            phosphorus
+        ])
     }
 
     return (
@@ -182,7 +196,7 @@ function Graph () {
             </div>
 
             {nutrientData && nutrientData.map((data) => 
-                <div onClick={applyNutrient} id={data.id} key={data.id} style={{border: "1px solid black"}}>
+                <div onClick={applyNutrient} id={data.id} key={data.id} style={{border: "1px solid black", display: "inline-block", width: "200px", margin: "5px"}}>
                     {data.name}
                 </div>
             )}
@@ -195,4 +209,4 @@ export default Graph;
 
 // 이제 y축을 하루 기준 필요 섭취량 100% 기준으로 나타내고
 // 사료, 영양제 탭으로 나눌까
-// 클릭시 axios요청으로 백엔드에서 
+// 클릭시 axios요청으로 백엔드에서 요청까지는 했습니당
