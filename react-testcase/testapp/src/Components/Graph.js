@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Chart } from 'react-chartjs-2';
-
+import { BACKEND } from '../config';
+import axios from 'axios';
 
 const useGraph = () => {
     useEffect(() => {
@@ -56,12 +57,18 @@ const useGraph = () => {
     }
 
 
+const mockAsyncNutrientData = () => 
+    new Promise(resolve => {
+        setTimeout(async function() {
+            const result = await axios.get(`${BACKEND}/feed/`)
+            resolve({
+                data: result.data
+            })
+        }, 200)
+    })
 
-const mockAsyncNutrientData = () => {
-    
-}
 
-const useDataGraph = () => {
+const useDataGraph = (graphData) => {
     useEffect(() => {
         // 우선 컨텍스트를 가져옵니다. 
         const ctx = document.getElementById("customChart").getContext('2d');
@@ -76,7 +83,7 @@ const useDataGraph = () => {
                 labels: ["급여량", "수분량", "조단백", "조지방", "조섬유", "조회분", "칼슘", "인"],
                 datasets: [{
                     label: 'Essential Nutrients',
-                    data: [12, 19, 3, 5, 2, 3, 10, 9],
+                    data: graphData,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -111,13 +118,50 @@ const useDataGraph = () => {
                 }
             }
         });
-    }, [])
+    }, [graphData])
 }
 
 
 function Graph () {
+    const [nutrientData, setNutrientData] = useState(null);
+    const [graphData, setGraphData] = useState([0,0,0,0,0,0,0,0]);
     useGraph();
-    useDataGraph();
+
+    const getNutrientData = useCallback(async () => {
+        try {
+            const { data } = await mockAsyncNutrientData();
+            setNutrientData(data);
+            console.log(data)
+        } catch (err) {
+            console.error(err);
+        }
+      },[nutrientData]);
+      
+    useEffect(() => {
+        getNutrientData();
+    }, [])
+
+    useDataGraph(graphData);
+    
+    const filterNutrientData = (id) => {
+        if (nutrientData === null) {
+            console.log("ERROR! nutrientData is null")
+            return;
+        }
+
+        return nutrientData.filter(object => {
+            return object['id'] === parseInt(id)
+        })
+
+    }
+    const applyNutrient = async (event) => {
+        const { id } = event.target; 
+        const object = await filterNutrientData(id)
+        console.log(object)
+        const { calorie, moisture, crude_protein, crude_fat, crude_fiber, crude_ash, calcium, phosphorus } = object[0];
+        setGraphData([calorie/100, moisture, crude_protein, crude_fat, crude_fiber, crude_ash, calcium, phosphorus])
+    }
+
     return (
         <>
             <div style={{width: "50vw"}}>
@@ -127,6 +171,13 @@ function Graph () {
             <div style={{width: "50vw"}}>
                 <canvas id="customChart"></canvas>
             </div>
+
+            {nutrientData && nutrientData.map((data) => 
+                
+                <div onClick={applyNutrient} id={data.id} key={data.id} style={{border: "1px solid black"}}>
+                    {data.name}
+                </div>
+            )}
         </>
     )
 }
