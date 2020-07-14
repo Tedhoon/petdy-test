@@ -34,14 +34,16 @@ class Snack(models.Model):
     name = models.CharField("간식 이름", max_length=50)
     pass
 
+
+
 class Nutrient(models.Model):
     
     class Meta:
         verbose_name = "영양제"
         verbose_name_plural = "영양제"
-        
 
     name = models.CharField("영양제 이름", max_length=50)
+    # 칼로리 수분량 조단백 조지방 조섬유 조회분 칼슘 인
     calorie = models.CharField("칼로리", max_length=1000)
     moisture = models.CharField("수분량", max_length=1000)
     crude_protein = models.CharField("조단백", max_length=1000)

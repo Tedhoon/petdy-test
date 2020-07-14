@@ -76,7 +76,7 @@ const useDataGraph = (graphData) => {
             data: {
                 labels: ["급여량", "수분량", "조단백", "조지방", "조섬유", "조회분", "칼슘", "인"],
                 datasets: [{
-                    label: 'Essential Nutrients',
+                    label: 'Target Nutrients',
                     data: graphData,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -120,8 +120,6 @@ function Graph () {
     const [nutrientData, setNutrientData] = useState(null);
     const [graphData, setGraphData] = useState([0,0,0,0,0,0,0,0]);
 
-    useGraph();
-
     // mockAsyncData 호출 및 데이터 set
     const getNutrientData = async () => {
         try {
@@ -138,6 +136,7 @@ function Graph () {
         getNutrientData();
     }, [])
 
+    useGraph();
     useDataGraph(graphData);
     
     // pk값으로 오브젝트 가져오기
