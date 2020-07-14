@@ -26,4 +26,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
 
+    path('exchange_feed/', views.exchange_feed, name="")
+
 ]
