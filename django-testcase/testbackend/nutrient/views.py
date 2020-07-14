@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Feed, Nutrient, ExchangedFeed
+from django.http import HttpResponse
+from .models import Feed, Nutrient, ExchangedFeed, ExchangedNutrient
 from .serializers import FeedSerializer, NutrientSerializer
 from rest_framework import viewsets 
 
@@ -17,11 +18,7 @@ class NutrientViewSet(viewsets.ModelViewSet):
 
 
 
-def cal_g(data):
-    mydata = float(data)
-    # cal_data = mydata* 
-    pass
-    # return cal_data
+
 
 
 
@@ -30,14 +27,38 @@ def exchange_feed(request):
     queryset = Feed.objects.all()
 
     for obj in queryset:
-        print(obj.name)
-        print(obj.types)
-        print(float(obj.calorie))
-        print(float(obj.moisture))
-        print(float(obj.crude_protein))
-        print(float(obj.crude_fat))
-        print(float(obj.crude_fiber))
-        print(float(obj.crude_ash))
-        print(float(obj.calcium))
-        print(float(obj.phosphorus)*1000)
-    pass
+        ExchangedFeed.objects.create(
+            name= obj.name,
+            types = obj.types,
+            calorie = round(float(obj.calorie)/100, 6),
+            moisture = round(float(obj.moisture)/100, 6),
+            crude_protein = round(float(obj.crude_protein)/100, 6),
+            crude_fat = round(float(obj.crude_fat)/100, 6),
+            crude_fiber = round(float(obj.crude_fiber)/100, 6),
+            crude_ash = round(float(obj.crude_ash)/100, 6),
+            calcium = round(float(obj.calcium)/100, 6),
+            phosphorus = round(float(obj.phosphorus)/100, 6),
+        )
+        
+        print(f"{obj.name} 오브젝트가 생성되었습니다.")
+    return HttpResponse("환산이 완료되었습니다.")
+
+# 영양소 환산 func
+def exchange_nutrient(request):
+    queryset = Nutrient.objects.all()
+
+    for obj in queryset:
+        ExchangedNutrient.objects.create(
+            name= obj.name,
+            calorie = round(float(obj.calorie)/100, 6),
+            moisture = round(float(obj.moisture)/100, 6),
+            crude_protein = round(float(obj.crude_protein)/100, 6),
+            crude_fat = round(float(obj.crude_fat)/100, 6),
+            crude_fiber = round(float(obj.crude_fiber)/100, 6),
+            crude_ash = round(float(obj.crude_ash)/100, 6),
+            calcium = round(float(obj.calcium)/100, 6),
+            phosphorus = round(float(obj.phosphorus)/100, 6),
+        )
+        
+        print(f"{obj.name} 오브젝트가 생성되었습니다.")
+    return HttpResponse("환산이 완료되었습니다.")
