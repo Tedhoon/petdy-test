@@ -1,11 +1,19 @@
 import React from 'react';
 import './App.css';
 import Graph from './Components/Graph';
+import NoviGraph from './Components/Novi';
+
+
+const tempStyle={
+  height:"98vh"
+}
 
 function App() {
   return (
     <div className="App">
-      <Graph />
+      <div style={tempStyle}>
+        <NoviGraph />
+      </div>
     </div>
   );
 }
