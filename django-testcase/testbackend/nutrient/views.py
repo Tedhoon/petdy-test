@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Feed, Nutrient, ExchangedFeed, ExchangedNutrient
-from .serializers import FeedSerializer, NutrientSerializer
+from .serializers import FeedSerializer, NutrientSerializer, ExchangedFeedSerializer, ExchangedNutrientSerializer
 from rest_framework import viewsets 
 
 
@@ -14,6 +14,13 @@ class NutrientViewSet(viewsets.ModelViewSet):
     serializer_class = NutrientSerializer
 
 
+class ExchangedFeedViewSet(viewsets.ModelViewSet):
+    queryset = ExchangedFeed.objects.all()
+    serializer_class = ExchangedFeedSerializer
+
+class ExchangedNutrientViewSet(viewsets.ModelViewSet):
+    queryset = ExchangedNutrient.objects.all()
+    serializer_class = ExchangedNutrientSerializer
 
 
 

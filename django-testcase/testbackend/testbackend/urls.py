@@ -21,6 +21,8 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register('feed', views.FeedViewSet)
 router.register('nutrient', views.NutrientViewSet)
+router.register('exchangedfeed', views.ExchangedFeedViewSet)
+router.register('exchangednutrient', views.ExchangedNutrientViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
