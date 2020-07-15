@@ -11,6 +11,7 @@ const tempStyle={
 function App() {
   return (
     <div className="App">
+      <Graph/>
       <div style={tempStyle}>
         <NoviGraph />
       </div>
