@@ -13,7 +13,9 @@ const tempStyle={
 
 function App() {
   const [feed, nutrient] = useFetchData();
-  const [target, setTarget] = useState([]);
+  const [keys, setKeys] = useState([]);
+  const [feedKey, setFeedKey] = useState([]);
+  const [nutrientKey, setNutrientKey] = useState([]);
   const [data, setData] = useState([
       {
           "item": "칼로리",
@@ -42,22 +44,21 @@ function App() {
 
   ])
 
-  const filterFeedData = (id) => {
-    // if (feed || nutrient === null) {
-    //     console.log("ERROR! Data is null")
-    //     return;
-    // }
-    
-    //여기서 if/else로 분기해서 data filtering?
-
-    return feed.filter(object => {
+  const filterData = (type, id) => {
+    if (type==="feed") {
+      return feed.filter(object => {
         return object['id'] === parseInt(id)
-    })
+      })
+    } else if (type==="nutrient") {
+      return nutrient.filter(object => {
+        return object['id'] === parseInt(id)
+      })
+    }
   }
 
   const useHandleFeedData = async(event) => {
     const { id } = event.target;
-    const targetFeedData = await filterFeedData(id)
+    const targetFeedData = await filterData("feed", id)
 
     console.log(targetFeedData)
 
@@ -90,45 +91,72 @@ function App() {
     tempData[7][name] = parseFloat(phosphorus)
     console.log(tempData)
     setData(tempData)
-    setTarget([name])
-    console.log(target)
+    setFeedKey([name])
+    // console.log(target)
     // console.log(tempData[0])
-    tempData = null
+    // tempData = null
+  };
+ 
 
+  const useHandleNutrientData = async(event) => {
+    // 여기서 setData로 초기화?
+    const { id } = event.target;
+    const targetNutrientData = await filterData("nutrient", id)
 
+    console.log(targetNutrientData)
 
-    for (let i=0; i<data.length; i++) {
-      
-        // console.log(calorie, moisture, phosphorus)
-      // console.log(data[i])
-      // tempData[i][feed[1].name] = parseFloat(feed[i][i])
-    }
-    // console.log(tempData)
-    // setData(...data, tempData)
+    // 넣을껀 target id를 가진 하나의 것이다.
+    const { 
+      name,
+      calorie,
+      moisture,
+      crude_protein,
+      crude_fat,
+      crude_fiber,
+      crude_ash,
+      calcium,
+      phosphorus
+    } = targetNutrientData[0];
+    
+    // console.log("cal" , calorie)
+    // console.log(data)
 
-    // return [data]
-    // setData(returnedData)
-    // let a = [data, ...tempData]
-    // console.log(a)
+    let tempData = data
+
+    // console.log(tempData[0])
+    tempData[0][name] = parseFloat(calorie)
+    tempData[1][name] = parseFloat(moisture)
+    tempData[2][name] = parseFloat(crude_protein)
+    tempData[3][name] = parseFloat(crude_fat)
+    tempData[4][name] = parseFloat(crude_fiber)
+    tempData[5][name] = parseFloat(crude_ash)
+    tempData[6][name] = parseFloat(calcium)
+    tempData[7][name] = parseFloat(phosphorus)
+    console.log(tempData)
+    setData(tempData)
+    setNutrientKey([name])
+    // console.log(target)
+    // console.log(tempData[0])
+    // tempData = null
     
   };
+
   useEffect(() => {
     console.log("작동")
     console.log(data)
-    console.log(target)
-  }, [data, target])
-  const useHandleNutrientData = (event) => {
-    const { id } = event.target;
-    console.log(id)
-    // setData(returnedData)
-  };
+    console.log(keys)
+    let mergeKeys = new Array();
+    mergeKeys = mergeKeys.concat(feedKey, nutrientKey)
+    setKeys(mergeKeys)
+  }, [data, feedKey, nutrientKey])
+
 
 
   return (
     <div className="App">
       {/* <Graph/> */}
       <div style={tempStyle}>
-        <NoviGraph data={data} target={target} />
+        <NoviGraph data={data} keys={keys} />
       </div>
       <div>
         {feed && feed.map(data=> 
