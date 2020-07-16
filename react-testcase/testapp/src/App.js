@@ -75,21 +75,37 @@ function App() {
       phosphorus
     } = targetFeedData[0];
     
-    console.log("cal" , calorie)
-    console.log(data)
+    // console.log("cal" , calorie)
+    // console.log(data)
 
     let tempData = data
 
-    console.log(tempData[0])
-    tempData[0][name] = parseFloat(calorie)
-    tempData[1][name] = parseFloat(moisture)
-    tempData[2][name] = parseFloat(crude_protein)
-    tempData[3][name] = parseFloat(crude_fat)
-    tempData[4][name] = parseFloat(crude_fiber)
-    tempData[5][name] = parseFloat(crude_ash)
-    tempData[6][name] = parseFloat(calcium)
-    tempData[7][name] = parseFloat(phosphorus)
-    console.log(tempData)
+    if (tempData[0].hasOwnProperty(name)) {
+      // key 값이 있는지 확인
+      for(let i=0; i<tempData.length; i++) {
+        delete tempData[i][name]
+      }
+    } else {
+      tempData[0][name] = parseFloat(calorie)
+      tempData[1][name] = parseFloat(moisture)
+      tempData[2][name] = parseFloat(crude_protein)
+      tempData[3][name] = parseFloat(crude_fat)
+      tempData[4][name] = parseFloat(crude_fiber)
+      tempData[5][name] = parseFloat(crude_ash)
+      tempData[6][name] = parseFloat(calcium)
+      tempData[7][name] = parseFloat(phosphorus)
+    }
+
+    // console.log(tempData[0])
+    // tempData[0][name] = parseFloat(calorie)
+    // tempData[1][name] = parseFloat(moisture)
+    // tempData[2][name] = parseFloat(crude_protein)
+    // tempData[3][name] = parseFloat(crude_fat)
+    // tempData[4][name] = parseFloat(crude_fiber)
+    // tempData[5][name] = parseFloat(crude_ash)
+    // tempData[6][name] = parseFloat(calcium)
+    // tempData[7][name] = parseFloat(phosphorus)
+    // console.log(tempData)
     setData(tempData)
     setFeedKey([name])
     // console.log(target)
@@ -123,16 +139,22 @@ function App() {
 
     let tempData = data
 
-    // console.log(tempData[0])
-    tempData[0][name] = parseFloat(calorie)
-    tempData[1][name] = parseFloat(moisture)
-    tempData[2][name] = parseFloat(crude_protein)
-    tempData[3][name] = parseFloat(crude_fat)
-    tempData[4][name] = parseFloat(crude_fiber)
-    tempData[5][name] = parseFloat(crude_ash)
-    tempData[6][name] = parseFloat(calcium)
-    tempData[7][name] = parseFloat(phosphorus)
-    console.log(tempData)
+    if (tempData[0].hasOwnProperty(name)) {
+      // key 값이 있는지 확인
+      for(let i=0; i<tempData.length; i++) {
+        delete tempData[i][name]
+      }
+    } else {
+      tempData[0][name] = parseFloat(calorie)
+      tempData[1][name] = parseFloat(moisture)
+      tempData[2][name] = parseFloat(crude_protein)
+      tempData[3][name] = parseFloat(crude_fat)
+      tempData[4][name] = parseFloat(crude_fiber)
+      tempData[5][name] = parseFloat(crude_ash)
+      tempData[6][name] = parseFloat(calcium)
+      tempData[7][name] = parseFloat(phosphorus)
+    }
+    // console.log(tempData)
     setData(tempData)
     setNutrientKey([name])
     // console.log(target)
@@ -166,8 +188,6 @@ function App() {
         {nutrient && nutrient.map(data=> 
           <button key={data.id} id={data.id} onClick={useHandleNutrientData}>{data.name}</button>)}
         <br />   <br />   <br />   <br />   <br />   
-        {data.map(data=>
-          <button>{data.item}</button>)}
       </div>
     </div>
   );
