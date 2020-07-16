@@ -149,7 +149,6 @@ function Graph () {
         return nutrientData.filter(object => {
             return object['id'] === parseInt(id)
         })
-
     }
 
     // target onClick시 해당 data handling

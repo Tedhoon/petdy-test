@@ -9,83 +9,83 @@ const datas = [
     {
       "nutrient": "칼로리",
       "촉촉 사료": 598,
-      "촉촉 사료Color": "hsl(266, 70%, 50%)",
+    //   "촉촉 사료Color": "hsl(266, 70%, 50%)",
       "영양제 temp": 51,
-      "영양제 tempColor": "hsl(202, 70%, 50%)",
+    //   "영양제 tempColor": "hsl(202, 70%, 50%)",
       "간식 temp": 23,
-      "간식 tempColor": "hsl(41, 70%, 50%)",
+    //   "간식 tempColor": "hsl(41, 70%, 50%)",
       },
     {
       "nutrient": "수분량",
       "촉촉 사료": 322,
-      "촉촉 사료Color": "hsl(230, 70%, 50%)",
+    //   "촉촉 사료Color": "hsl(230, 70%, 50%)",
       "영양제 temp": 13,
-      "영양제 tempColor": "hsl(295, 70%, 50%)",
+    //   "영양제 tempColor": "hsl(295, 70%, 50%)",
       "간식 temp": 5,
-      "간식 tempColor": "hsl(123, 70%, 50%)",
+    //   "간식 tempColor": "hsl(123, 70%, 50%)",
       },
     {
       "nutrient": "조단백",
       "촉촉 사료": 39,
-      "촉촉 사료Color": "hsl(313, 70%, 50%)",
+    //   "촉촉 사료Color": "hsl(313, 70%, 50%)",
       "영양제 temp": 13,
-      "영양제 tempColor": "hsl(121, 70%, 50%)",
+    //   "영양제 tempColor": "hsl(121, 70%, 50%)",
       "간식 temp": 71,
-      "간식 tempColor": "hsl(64, 70%, 50%)",
+    //   "간식 tempColor": "hsl(64, 70%, 50%)",
       },
     {
       "nutrient": "조지방",
       "촉촉 사료": 35,
-      "촉촉 사료Color": "hsl(145, 70%, 50%)",
+    //   "촉촉 사료Color": "hsl(145, 70%, 50%)",
       "영양제 temp": 100,
-      "영양제 tempColor": "hsl(116, 70%, 50%)",
+    //   "영양제 tempColor": "hsl(116, 70%, 50%)",
       "간식 temp": 143,
-      "간식 tempColor": "hsl(115, 70%, 50%)",
+    //   "간식 tempColor": "hsl(115, 70%, 50%)",
       },
     {
       "nutrient": "조섬유",
       "촉촉 사료": 150,
-      "촉촉 사료Color": "hsl(285, 70%, 50%)",
+    //   "촉촉 사료Color": "hsl(285, 70%, 50%)",
       "영양제 temp": 100,
-      "영양제 tempColor": "hsl(264, 70%, 50%)",
+    //   "영양제 tempColor": "hsl(264, 70%, 50%)",
       "간식 temp": 156,
-      "간식 tempColor": "hsl(337, 70%, 50%)",
+    //   "간식 tempColor": "hsl(337, 70%, 50%)",
       },
     {
       "nutrient": "조회분",
       "촉촉 사료": 179,
-      "촉촉 사료Color": "hsl(275, 70%, 50%)",
+    //   "촉촉 사료Color": "hsl(275, 70%, 50%)",
       "영양제 temp": 100,
-      "영양제 tempColor": "hsl(256, 70%, 50%)",
+    //   "영양제 tempColor": "hsl(256, 70%, 50%)",
       "간식 temp": 188,
-      "간식 tempColor": "hsl(341, 70%, 50%)",
+    //   "간식 tempColor": "hsl(341, 70%, 50%)",
       },
     {
       "nutrient": "칼슘",
       "촉촉 사료": 169,
-      "촉촉 사료Color": "hsl(115, 70%, 50%)",
+    //   "촉촉 사료Color": "hsl(115, 70%, 50%)",
       "영양제 temp": 163,
-      "영양제 tempColor": "hsl(232, 70%, 50%)",
+    //   "영양제 tempColor": "hsl(232, 70%, 50%)",
       "간식 temp": 119,
-      "간식 tempColor": "hsl(159, 70%, 50%)",
+    //   "간식 tempColor": "hsl(159, 70%, 50%)",
       },
     {
       "nutrient": "인",
       "촉촉 사료": 169,
-      "촉촉 사료Color": "hsl(115, 70%, 50%)",
+    //   "촉촉 사료Color": "hsl(115, 70%, 50%)",
       "영양제 temp": 163,
-      "영양제 tempColor": "hsl(232, 70%, 50%)",
+    //   "영양제 tempColor": "hsl(232, 70%, 50%)",
       "간식 temp": 119,
-      "간식 tempColor": "hsl(159, 70%, 50%)",
+    //   "간식 tempColor": "hsl(159, 70%, 50%)",
        }
   ]
-console.log(datas)
+// console.log(datas)
 
-const NoviGraph = () => (
+const NoviGraph = ({data}) => (
     <ResponsiveBar
-        data={datas}
-        keys={[ '촉촉 사료', '영양제 temp', '간식 temp' ]}
-        indexBy="nutrient"
+        data={data}
+        keys={[ '타겟1', '타겟2' ]}
+        indexBy="item"
         margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
         padding={0.3}
         colors={{ scheme: 'nivo' }}
@@ -131,7 +131,7 @@ const NoviGraph = () => (
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'country',
+            legend: 'item',
             legendPosition: 'middle',
             legendOffset: 32
         }}
@@ -139,7 +139,7 @@ const NoviGraph = () => (
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'food',
+            legend: 'amount',
             legendPosition: 'middle',
             legendOffset: -40
         }}
