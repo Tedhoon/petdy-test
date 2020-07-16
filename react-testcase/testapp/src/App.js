@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import './App.css';
 import Graph from './Components/Graph';
 import NoviGraph from './Components/Novi';
@@ -60,7 +60,7 @@ function App() {
     const { id } = event.target;
     const targetFeedData = await filterData("feed", id)
 
-    console.log(targetFeedData)
+    // console.log(targetFeedData)
 
     // 넣을껀 target id를 가진 하나의 것이다.
     const { 
@@ -119,7 +119,7 @@ function App() {
     const { id } = event.target;
     const targetNutrientData = await filterData("nutrient", id)
 
-    console.log(targetNutrientData)
+    // console.log(targetNutrientData)
 
     // 넣을껀 target id를 가진 하나의 것이다.
     const { 
@@ -164,9 +164,9 @@ function App() {
   };
 
   useEffect(() => {
-    console.log("작동")
-    console.log(data)
-    console.log(keys)
+    // console.log("작동")
+    // console.log(data)
+    // console.log(keys)
     let mergeKeys = new Array();
     mergeKeys = mergeKeys.concat(feedKey, nutrientKey)
     setKeys(mergeKeys)
