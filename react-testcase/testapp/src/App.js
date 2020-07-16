@@ -13,46 +13,31 @@ const tempStyle={
 
 function App() {
   const [feed, nutrient] = useFetchData();
+  const [target, setTarget] = useState([]);
   const [data, setData] = useState([
       {
           "item": "칼로리",
-          "타겟1": 0,
-          "타겟2": 0,
       },
       {
           "item": "수분량",
-          "타겟1": 0,
-          "타겟2": 0,
       },
       {
           "item": "조단백",
-          "타겟1": 0,
-          "타겟2": 0,
       },
       {
           "item": "조지방",
-          "타겟1": 0,
-          "타겟2": 0,
       },
       {
           "item": "조섬유",
-          "타겟1": 0,
-          "타겟2": 0,
       },
       {
           "item": "조회분",
-          "타겟1": 0,
-          "타겟2": 0,
       },
       {
           "item": "칼슘",
-          "타겟1": 0,
-          "타겟2": 0,
       },
       {
           "item": "인",
-          "타겟1": 0,
-          "타겟2": 0,
       },
 
   ])
@@ -76,9 +61,9 @@ function App() {
 
     console.log(targetFeedData)
 
-    const tempData = data
     // 넣을껀 target id를 가진 하나의 것이다.
-    let { 
+    const { 
+      name,
       calorie,
       moisture,
       crude_protein,
@@ -90,12 +75,33 @@ function App() {
     } = targetFeedData[0];
     
     console.log("cal" , calorie)
+    console.log(data)
+
+    let tempData = data
+
+    console.log(tempData[0])
+    tempData[0][name] = parseFloat(calorie)
+    tempData[1][name] = parseFloat(moisture)
+    tempData[2][name] = parseFloat(crude_protein)
+    tempData[3][name] = parseFloat(crude_fat)
+    tempData[4][name] = parseFloat(crude_fiber)
+    tempData[5][name] = parseFloat(crude_ash)
+    tempData[6][name] = parseFloat(calcium)
+    tempData[7][name] = parseFloat(phosphorus)
+    console.log(tempData)
+    setData(tempData)
+    setTarget([name])
+    console.log(target)
+    // console.log(tempData[0])
+    tempData = null
+
+
 
     for (let i=0; i<data.length; i++) {
       
         // console.log(calorie, moisture, phosphorus)
       // console.log(data[i])
-      tempData[i][feed[1].name] = parseFloat(feed[i][i])
+      // tempData[i][feed[1].name] = parseFloat(feed[i][i])
     }
     // console.log(tempData)
     // setData(...data, tempData)
@@ -109,7 +115,8 @@ function App() {
   useEffect(() => {
     console.log("작동")
     console.log(data)
-  }, [data])
+    console.log(target)
+  }, [data, target])
   const useHandleNutrientData = (event) => {
     const { id } = event.target;
     console.log(id)
@@ -121,7 +128,7 @@ function App() {
     <div className="App">
       {/* <Graph/> */}
       <div style={tempStyle}>
-        <NoviGraph data={data} />
+        <NoviGraph data={data} target={target} />
       </div>
       <div>
         {feed && feed.map(data=> 

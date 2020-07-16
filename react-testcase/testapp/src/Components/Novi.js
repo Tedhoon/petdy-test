@@ -81,10 +81,11 @@ const datas = [
   ]
 // console.log(datas)
 
-const NoviGraph = ({data}) => (
+const NoviGraph = ({ data , target }) => (
     <ResponsiveBar
         data={data}
-        keys={[ '타겟1', '타겟2' ,'닥터맘마 강아지 습식사료 오리 촉촉사료' ]}
+        // keys={[ '닥터맘마 강아지 습식사료 오리 촉촉사료' ]}
+        keys={target}
         indexBy="item"
         margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
         padding={0.3}
