@@ -96,21 +96,12 @@ function App() {
       tempData[7][name] = parseFloat(phosphorus)
     }
 
-    // console.log(tempData[0])
-    // tempData[0][name] = parseFloat(calorie)
-    // tempData[1][name] = parseFloat(moisture)
-    // tempData[2][name] = parseFloat(crude_protein)
-    // tempData[3][name] = parseFloat(crude_fat)
-    // tempData[4][name] = parseFloat(crude_fiber)
-    // tempData[5][name] = parseFloat(crude_ash)
-    // tempData[6][name] = parseFloat(calcium)
-    // tempData[7][name] = parseFloat(phosphorus)
-    // console.log(tempData)
     setData(tempData)
-    setFeedKey([name])
-    // console.log(target)
-    // console.log(tempData[0])
-    // tempData = null
+    if (!tempData[0].hasOwnProperty(name)) {
+      setFeedKey([])
+    } else {
+      setFeedKey([name])
+    }  
   };
  
 
@@ -140,6 +131,9 @@ function App() {
     let tempData = data
 
     if (tempData[0].hasOwnProperty(name)) {
+      // key 지워주자
+      setNutrientKey(nutrientKey.filter(item => item !== name))
+
       // key 값이 있는지 확인
       for(let i=0; i<tempData.length; i++) {
         delete tempData[i][name]
@@ -153,23 +147,29 @@ function App() {
       tempData[5][name] = parseFloat(crude_ash)
       tempData[6][name] = parseFloat(calcium)
       tempData[7][name] = parseFloat(phosphorus)
+    
+      setNutrientKey([...nutrientKey, name])
     }
     // console.log(tempData)
     setData(tempData)
-    setNutrientKey([name])
-    // console.log(target)
-    // console.log(tempData[0])
-    // tempData = null
-    
   };
 
   useEffect(() => {
     // console.log("작동")
     // console.log(data)
-    // console.log(keys)
-    let mergeKeys = new Array();
-    mergeKeys = mergeKeys.concat(feedKey, nutrientKey)
-    setKeys(mergeKeys)
+
+    // feed & nutrient 합치게 생성
+    // let mergeKeys = new Array();
+    // mergeKeys = mergeKeys.concat(feedKey, nutrientKey)
+    // setKeys(mergeKeys) 
+
+    setKeys(
+      new Array().concat(feedKey, nutrientKey)
+    )
+
+    console.log("feed keys", feedKey)
+    console.log("nutrient Keys", nutrientKey)
+
   }, [data, feedKey, nutrientKey])
 
 

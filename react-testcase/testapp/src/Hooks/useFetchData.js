@@ -39,7 +39,7 @@ const mockAsyncNutrientData = () =>
     })
 
 export const useFetchData = () => {
-    console.log("중복호출 막아야한다")
+    // console.log("중복호출 막아야한다")
     // 일단 data에 feed만 담아서 해봅시당 
     // data는 object여야 함
     const [feed, setFeed] = useState(null)
