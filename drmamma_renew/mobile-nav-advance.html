@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./swiper.js"></script>
+    <link rel="stylesheet" href="./swiper.css" type="text/css">
+    <style>
+
+
+    </style>
+</head>
+<body>
+
+
+
+
+      
+<nav>
+    <div class="mobile_nav_wrap swiper-container" id="mobile_swipe_nav">
+        <div class="mobile_nav_container swiper-wrapper">
+            <div class="mobile_nav_list swiper-slide"><a href="/">닥터맘마 스토어</a></div>
+            <div class="mobile_nav_list swiper-slide"><a href="/product/list.html?cate_no=141">촉촉사료</a></div>
+            <div class="mobile_nav_list swiper-slide"><a href="/product/list.html?cate_no=144">처방사료</a></div>
+            <div class="mobile_nav_list swiper-slide"><a href="/product/list.html?cate_no=145">유산균,오메가3</a></div>
+            <div class="mobile_nav_list swiper-slide"><a href="/product/list.html?cate_no=123">영양제</a></div>
+            <div class="mobile_nav_list swiper-slide"><a href="/product/list.html?cate_no=47">간식</a></div>
+            <div class="mobile_nav_list swiper-slide"><a href="/product/list.html?cate_no=158">용품</a></div>
+            <div class="mobile_nav_list swiper-slide"><a href="/board/이벤트/8/">이벤트</a></div>
+        </div>
+    </div>
+</nav>
+
+
+
+
+<!-- 
+    <div class="swiper-container" id="nav">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">1</div>
+          <div class="swiper-slide">2</div>
+          <div class="swiper-slide">3</div>
+          <div class="swiper-slide">零食</div>
+          <div class="swiper-slide">肉蛋</div>
+          <div class="swiper-slide">蔬菜</div>
+          <div class="swiper-slide">酒飲</div>
+          <div class="swiper-slide">熟食</div>
+          <div class="swiper-slide">水產</div>
+          <div class="swiper-slide">輕食</div>
+        </div>
+      </div> -->
+    
+      <!-- <div class="swiper-container" id="page">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">1</div>
+          <div class="swiper-slide">2</div>
+          <div class="swiper-slide">3</div>
+          <div class="swiper-slide">零食</div>
+          <div class="swiper-slide">肉蛋</div>
+          <div class="swiper-slide">蔬菜</div>
+          <div class="swiper-slide">酒飲</div>
+          <div class="swiper-slide">熟食</div>
+          <div class="swiper-slide">水產</div>
+          <div class="swiper-slide">輕食</div>
+        </div>
+      </div> -->
+
+
+      <script>
+
+         new Swiper('#mobile_swipe_nav', {
+            slidesPerView:6,
+            loop: true,
+            freeMode: true,
+            loopedSlides: 5, //looped slides should be the same
+            watchSlidesVisibility: true,
+        });
+// var galleryTop = new Swiper('#page', {
+//       loop:true,
+//       loopedSlides: 5, //looped slides should be the same
+//       thumbs: {
+//         swiper: galleryThumbs,
+//       },
+// });
+      </script>
+
+
+    </body>
+</html>

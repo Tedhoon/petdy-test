@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./swiper.js"></script>
+    <link rel="stylesheet" href="./swiper.css" type='text/css' media='all'>
+</head>
+<body>
+
+    <div class="swiper-box-sub-container swiper-container">
+        <div class="gnb-box-sub swiper-wrapper">
+                <div class='gbs-menu swiper-slide col-cat0 active' style='font-weight : bold'><a href='/'>베이컨박스</a></div>
+                <div class='gbs-menu swiper-slide col-cat1 ' style='font-weight : bold'><a href='/store/'>베이컨스토어</a></div>
+                <div class='gbs-menu swiper-slide col-cat2 ' style='font-weight : normal'><a href='/store/collection/202007_pro1-collection?orderBy=default'><img src='https://cdn.baconbox.co/wp-content/themes/shopkeeper-child/inc/gnb/view/asset/200330_GNB/assets/GR/Icon/event_icon.png' style='display: inline-block; vertical-align: middle; margin-right: 3px; margin-bottom: 3px; width: 16px;' alt=''>EVENT</a></div>
+                <div class='gbs-menu swiper-slide col-cat3 ' style='font-weight : normal'><a href='/store/collection/toys-collection/?orderBy=default'>장난감</a></div>
+                <div class='gbs-menu swiper-slide col-cat4 ' style='font-weight : normal'><a href='/store/collection/eatsfun-collection/?orderBy=default'>간식</a></div>
+                <div class='gbs-menu swiper-slide col-cat5 ' style='font-weight : normal'><a href='/store/collection/care-collection/?orderBy=default'>생활/용품</a></div>
+                <div class='gbs-menu swiper-slide col-cat6 ' style='font-weight : normal'><a href='/store/collection/acc-collection/?orderBy=default'>의류/액세서리</a></div>
+                <div class='gbs-menu swiper-slide col-cat7 ' style='font-weight : normal'><a href='/store/collection/collaboration-collection/?orderBy=default'>스페셜 콜라보</a></div>
+                <div class='gbs-menu swiper-slide col-cat8 ' style='font-weight : normal'><a href='/store/collection/all-collection/?orderBy=default'>전체보기</a></div>
+        </div>
+    </div>    
+
+
+    <nav>
+        <div class="mobile_nav_wrap">
+            <div class="mobile_nav_container">
+                <div class="mobile_nav_list"><a href="/">닥터맘마 스토어</a></div>
+                <div class="mobile_nav_list"><a href="/product/list.html?cate_no=141">촉촉사료</a></div>
+                <div class="mobile_nav_list"><a href="/product/list.html?cate_no=144">처방사료</a></div>
+                <div class="mobile_nav_list"><a href="/product/list.html?cate_no=145">유산균,오메가3</a></div>
+                <div class="mobile_nav_list"><a href="/product/list.html?cate_no=123">영양제</a></div>
+                <div class="mobile_nav_list"><a href="/product/list.html?cate_no=47">간식</a></div>
+                <div class="mobile_nav_list"><a href="/product/list.html?cate_no=158">용품</a></div>
+                <div class="mobile_nav_list"><a href="/board/이벤트/8/">이벤트</a></div>
+            </div>
+        </div>
+    </nav>
+
+
+      <script>
+              var swiper = new Swiper('.mobile_nav_container', {
+                pagination: '.swiper-pagination',
+                slidesPerView: 'auto',
+                freeMode: true
+           });
+      </script>
+</body>
+</html>
