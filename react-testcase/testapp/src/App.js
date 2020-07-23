@@ -15,34 +15,36 @@ function App() {
   const [feed, nutrient] = useFetchData();
   const [keys, setKeys] = useState([]);
   const [feedKey, setFeedKey] = useState([]);
+  const [feedAmount, setFeedAmount] = useState(1);
   const [nutrientKey, setNutrientKey] = useState([]);
-  const [data, setData] = useState([
+  const [nutrinetAmount, setNutrientAmount] = useState(1)
+  const initialDataState = [
       {
-          "item": "칼로리",
+          "item": "칼로리(Kcal)",
       },
       {
           "item": "수분량",
       },
       {
-          "item": "조단백",
+          "item": "조단백(g)",
       },
       {
-          "item": "조지방",
+          "item": "조지방(g)",
       },
       {
-          "item": "조섬유",
+          "item": "조섬유(g)",
       },
       {
-          "item": "조회분",
+          "item": "조회분(g)",
       },
       {
-          "item": "칼슘",
+          "item": "칼슘(g)",
       },
       {
-          "item": "인",
-      },
-
-  ])
+          "item": "인(g)",
+      }
+    ]
+  const [data, setData] = useState(initialDataState)
 
   const filterData = (type, id) => {
     if (type==="feed") {
@@ -86,14 +88,16 @@ function App() {
         delete tempData[i][name]
       }
     } else {
-      tempData[0][name] = parseFloat(calorie)
-      tempData[1][name] = parseFloat(moisture)
-      tempData[2][name] = parseFloat(crude_protein)
-      tempData[3][name] = parseFloat(crude_fat)
-      tempData[4][name] = parseFloat(crude_fiber)
-      tempData[5][name] = parseFloat(crude_ash)
-      tempData[6][name] = parseFloat(calcium)
-      tempData[7][name] = parseFloat(phosphorus)
+
+      // 추천값 곱하고 소숫점 2자리 수에서 반올림, toFixed를 쓰면 string이 되기 때문에 연산 후 Float 형변환
+      tempData[0][name] = parseFloat((parseFloat(calorie)*feedAmount).toFixed(2))
+      tempData[1][name] = parseFloat((parseFloat(moisture)*feedAmount).toFixed(2))
+      tempData[2][name] = parseFloat((parseFloat(crude_protein)*feedAmount).toFixed(2))
+      tempData[3][name] = parseFloat((parseFloat(crude_fat)*feedAmount).toFixed(2))
+      tempData[4][name] = parseFloat((parseFloat(crude_fiber)*feedAmount).toFixed(2))
+      tempData[5][name] = parseFloat((parseFloat(crude_ash)*feedAmount).toFixed(2))
+      tempData[6][name] = parseFloat((parseFloat(calcium)*feedAmount).toFixed(2))
+      tempData[7][name] = parseFloat((parseFloat(phosphorus)*feedAmount).toFixed(2))
     }
 
     setData(tempData)
@@ -103,7 +107,6 @@ function App() {
       setFeedKey([name])
     }  
   };
- 
 
   const useHandleNutrientData = async(event) => {
     // 여기서 setData로 초기화?
@@ -139,24 +142,25 @@ function App() {
         delete tempData[i][name]
       }
     } else {
-      tempData[0][name] = parseFloat(calorie)
-      tempData[1][name] = parseFloat(moisture)
-      tempData[2][name] = parseFloat(crude_protein)
-      tempData[3][name] = parseFloat(crude_fat)
-      tempData[4][name] = parseFloat(crude_fiber)
-      tempData[5][name] = parseFloat(crude_ash)
-      tempData[6][name] = parseFloat(calcium)
-      tempData[7][name] = parseFloat(phosphorus)
+      // 추천값 곱하고 소숫점 2자리 수에서 반올림
+      tempData[0][name] = parseFloat((parseFloat(calorie)*nutrinetAmount).toFixed(2))
+      tempData[1][name] = parseFloat((parseFloat(moisture)*nutrinetAmount).toFixed(2))
+      tempData[2][name] = parseFloat((parseFloat(crude_protein)*nutrinetAmount).toFixed(2))
+      tempData[3][name] = parseFloat((parseFloat(crude_fat)*nutrinetAmount).toFixed(2))
+      tempData[4][name] = parseFloat((parseFloat(crude_fiber)*nutrinetAmount).toFixed(2))
+      tempData[5][name] = parseFloat((parseFloat(crude_ash)*nutrinetAmount).toFixed(2))
+      tempData[6][name] = parseFloat((parseFloat(calcium)*nutrinetAmount).toFixed(2))
+      tempData[7][name] = parseFloat((parseFloat(phosphorus)*nutrinetAmount).toFixed(2))
     
       setNutrientKey([...nutrientKey, name])
     }
     // console.log(tempData)
     setData(tempData)
-  };
+  }
 
   useEffect(() => {
     // console.log("작동")
-    // console.log(data)
+    console.log(data)
 
     // feed & nutrient 합치게 생성
     // let mergeKeys = new Array();
@@ -167,12 +171,17 @@ function App() {
       new Array().concat(feedKey, nutrientKey)
     )
 
-    console.log("feed keys", feedKey)
-    console.log("nutrient Keys", nutrientKey)
+    // console.log("feed keys", feedKey)
+    // console.log("nutrient Keys", nutrientKey)
 
   }, [data, feedKey, nutrientKey])
 
-
+  const useReset = () => {
+    setData(initialDataState);
+    setKeys([])
+    setFeedKey([])
+    setNutrientKey([])
+  }
 
   return (
     <div className="App">
@@ -188,6 +197,8 @@ function App() {
         {nutrient && nutrient.map(data=> 
           <button key={data.id} id={data.id} onClick={useHandleNutrientData}>{data.name}</button>)}
         <br />   <br />   <br />   <br />   <br />   
+
+        <button onClick={useReset}>🗑</button>
       </div>
     </div>
   );

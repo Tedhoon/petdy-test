@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <!-- <iframe
+     id="myframe" 
+     src="http://petdy.co.kr/library_category/video/" 
+     style="display: block !important; border: none !important; padding-top: 0px !important; padding-bottom: 0px !important; width: 100% !important; overflow: hidden !important; height: 738px !important;"
+    ></iframe> -->
+    <iframe
+     id="myframe" 
+     src="http://petdy.co.kr/" 
+     style="display: block !important; border: none !important; padding-top: 0px !important; padding-bottom: 0px !important; width: 100% !important; overflow: hidden !important; height: 738px !important;"
+    ></iframe>
+<script>
+
+
+    setTimeout(() => {
+        const frames = document.querySelector('#myframe').contentWindow;
+        console.log(frames.childFunction())
+
+    },3000)
+    
+// document.addEventListener('DOMContentLoaded', function(){
+//     console.log('?')
+//     setTimeout(() => {
+//         const myframe = document.querySelector('#myframe')
+//         console.log(myframe.contentDocument)
+//         console.log(myframe.contentWindow)
+//         var petdy_nav = document.querySelector('.fixed_header');
+//         // petdy_nav.style.display = "none";
+//         console.log("saddsa");
+//         var petdy_top_padding = document.querySelector('.site-content');
+//         petdy_top_padding.style.padding = 0;
+
+
+//     }, 3000)
+
+//  })
+
+</script>
+</body>
+</html>

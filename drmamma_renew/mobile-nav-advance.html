@@ -6,7 +6,95 @@
     <title>Document</title>
     <script src="./swiper.js"></script>
     <link rel="stylesheet" href="./swiper.css" type="text/css">
+
+    '''
+    일단 swiper js넣어야하고,
+    css도 넣어야하는데.. 이걸... 위에 넣으면 될 것 같은데 
+    위에 넣자
+    swiper js도 위에넣고
+
+    상위호환 안되나...흠
+
+    그것도 봐보자
+    3.5.4랑
+    5버전이랑 뭐가다른지
+
+    '''
+    
+    <!-- <script src="http://m.drmamma.net/yangji/js/swiper.min.js"></script> -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css"> -->
     <style>
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+
+.xans-layout-mobilenavigation ul { overflow:hidden; background:#4a5164; }
+.xans-layout-mobilenavigation ul li { float:left; }
+.xans-layout-mobilenavigation ul li a { display:block; height:43px; font-size:13px; line-height:43px; color:#fff; text-align:center; }
+.xans-layout-mobilenavigation ul.grid4 li { width:25%; }
+.xans-layout-mobilenavigation ul.grid5 li { width:20%; }
+
+.mobile_nav_wrap::-webkit-scrollbar { display: none; /* Chrome, Safari, Opera*/}
+.mobile_nav_list { padding: 12px 10px; letter-spacing: 0.5px; font-weight: normal; font-size: 1rem; }
+
+
+
+
+
+.toggle_header_inner {
+    position: relative;
+    background: rgba(255,255,255,0.8);
+    z-index: 97!important;
+}
+.toggle_header_inner .category {
+    position: absolute;
+    left: 12px;
+    top: 19px;
+    width: 34px;
+    height: 34px;
+   }
+.toggle_header_inner .category a {
+	display: inline-block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    text-indent: 100%;
+    white-space: nowrap;
+    background: url("/web/upload/yangji_uncor/btn_category_m.png") no-repeat 0 0;
+    background-size: 34px auto;
+}
+#header .toggle_header_inner .btn_search a img {
+    width: 36px;
+}
+
+#header .toggle_header_inner .btn_search {
+    position: absolute;
+    left: 52px;
+    top: 18px;
+}
+
+#header .toggle_header_inner .searchbox {
+	position: relative;
+    padding: 7px 74px 7px 10px;
+    display: none;
+}
+#header .toggle_header_inner .searchbox input#keyword{width:100%;}
+#header .toggle_header_inner .searchbox .button{width:60px;position:absolute;top:7px;right:10px;text-align:right;}
+#header .toggle_header_inner .searchbox .btnDelete{overflow: hidden;position:absolute;right:80px;top:9px;width:20px;height:20px;opacity:0.4;border:0;cursor: pointer;text-indent:100%;font-size:0;white-space: nowrap;background: url("/web/upload/yangji_uncor/btn_delete.png") no-repeat 0 0;background-size:22px 23px;}
+
+
+
+
+
+
+
+.mobile_nav_wrap {overflow: hidden; width: 100%;}
+
+.mobile_nav_list {
+    list-style:none; font-size: 12px; line-height: 1; position: relative !important; width: auto !important;
+}
 
 
     </style>
@@ -14,75 +102,31 @@
 <body>
 
 
-
-
-      
-<nav>
-    <div class="mobile_nav_wrap swiper-container" id="mobile_swipe_nav">
-        <div class="mobile_nav_container swiper-wrapper">
-            <div class="mobile_nav_list swiper-slide"><a href="/">닥터맘마 스토어</a></div>
-            <div class="mobile_nav_list swiper-slide"><a href="/product/list.html?cate_no=141">촉촉사료</a></div>
-            <div class="mobile_nav_list swiper-slide"><a href="/product/list.html?cate_no=144">처방사료</a></div>
-            <div class="mobile_nav_list swiper-slide"><a href="/product/list.html?cate_no=145">유산균,오메가3</a></div>
-            <div class="mobile_nav_list swiper-slide"><a href="/product/list.html?cate_no=123">영양제</a></div>
-            <div class="mobile_nav_list swiper-slide"><a href="/product/list.html?cate_no=47">간식</a></div>
-            <div class="mobile_nav_list swiper-slide"><a href="/product/list.html?cate_no=158">용품</a></div>
-            <div class="mobile_nav_list swiper-slide"><a href="/board/이벤트/8/">이벤트</a></div>
-        </div>
+<nav class="mobile_top_nav header_inner">
+    <div class="mobile_nav_wrap">
+        <ul class="mobile_nav_container swiper-wrapper">
+            <li class="mobile_nav_list swiper-slide mobile_nav_list_store"><a href="/">닥터맘마 스토어</a></li>
+            <li class="mobile_nav_list swiper-slide mobile_nav_list_m_feed"><a href="/product/list.html?cate_no=141">촉촉사료</a></li>
+            <li class="mobile_nav_list swiper-slide mobile_nav_list_c_feed"><a href="/product/list.html?cate_no=144">처방사료</a></li>
+            <li class="mobile_nav_list swiper-slide mobile_nav_list_bio"><a href="/product/list.html?cate_no=145">유산균,오메가3</a></li>
+            <li class="mobile_nav_list swiper-slide mobile_nav_list_medicine"><a href="/product/list.html?cate_no=123">영양제</a></li>
+            <li class="mobile_nav_list swiper-slide mobile_nav_list_snack"><a href="/product/list.html?cate_no=47">간식</a></li>
+            <li class="mobile_nav_list swiper-slide mobile_nav_list_product"><a href="/product/list.html?cate_no=158">용품</a></li>
+            <li class="mobile_nav_list swiper-slide mobile_nav_list_event"><a href="/board/이벤트/8/">이벤트</a></li>
+        </ul>
     </div>
 </nav>
 
 
 
 
-<!-- 
-    <div class="swiper-container" id="nav">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">1</div>
-          <div class="swiper-slide">2</div>
-          <div class="swiper-slide">3</div>
-          <div class="swiper-slide">零食</div>
-          <div class="swiper-slide">肉蛋</div>
-          <div class="swiper-slide">蔬菜</div>
-          <div class="swiper-slide">酒飲</div>
-          <div class="swiper-slide">熟食</div>
-          <div class="swiper-slide">水產</div>
-          <div class="swiper-slide">輕食</div>
-        </div>
-      </div> -->
-    
-      <!-- <div class="swiper-container" id="page">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">1</div>
-          <div class="swiper-slide">2</div>
-          <div class="swiper-slide">3</div>
-          <div class="swiper-slide">零食</div>
-          <div class="swiper-slide">肉蛋</div>
-          <div class="swiper-slide">蔬菜</div>
-          <div class="swiper-slide">酒飲</div>
-          <div class="swiper-slide">熟食</div>
-          <div class="swiper-slide">水產</div>
-          <div class="swiper-slide">輕食</div>
-        </div>
-      </div> -->
-
-
       <script>
-
-         new Swiper('#mobile_swipe_nav', {
-            slidesPerView:6,
-            loop: true,
-            freeMode: true,
-            loopedSlides: 5, //looped slides should be the same
-            watchSlidesVisibility: true,
+        var MobileSwipNav = new Swiper('.mobile_nav_wrap', {
+          pagination: '.swiper-pagination',
+          slidesPerView: 'auto',
+          freeMode: true
         });
-// var galleryTop = new Swiper('#page', {
-//       loop:true,
-//       loopedSlides: 5, //looped slides should be the same
-//       thumbs: {
-//         swiper: galleryThumbs,
-//       },
-// });
+
       </script>
 
 
