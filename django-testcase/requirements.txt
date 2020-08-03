@@ -1,4 +1,4 @@
 django
-django-rest-framework
+djangorestframework
 django-import-export
- 
+django-cors-headers
