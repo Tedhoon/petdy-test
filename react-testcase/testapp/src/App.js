@@ -12,6 +12,18 @@ const tempStyle={
 }
 
 function App() {
+  // 아니면 수분하고 영양소 그래프를 나눌까?
+  const [standardOutput, setStandardOutput] = useState({
+    'name': "", // name isRequired?
+    'calorie': "", 
+    'moisture': "",
+    'crude_protein': "",
+    'crude_fat': "",
+    'crude_fiber': "",
+    'crude_ash': "",
+    'calcium': "",
+    'phosphorus': "" 
+  })
   const [feed, nutrient] = useFetchData();
   const [keys, setKeys] = useState([]);
   const [feedKey, setFeedKey] = useState([]);
