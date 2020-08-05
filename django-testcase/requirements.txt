@@ -1,0 +1,4 @@
+django
+djangorestframework
+django-import-export
+django-cors-headers

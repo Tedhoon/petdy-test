@@ -25,7 +25,7 @@ SECRET_KEY = 'pkz8yml8vkb^urn&_q$1%a&nkcdro&0ovwpg$a^b%usjwmr4up'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
+       'https://petdy-test-frontend-tedhoon.endpoint.ainize.ai/',
        'http://petdy - ',
        'http://127.0.0.1:3000',
        'http://localhost:3000',    #React 도메인
