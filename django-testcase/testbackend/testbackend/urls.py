@@ -21,8 +21,10 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register('feed', views.FeedViewSet)
 router.register('nutrient', views.NutrientViewSet)
+router.register('snack', views.SnackViewSet)
 router.register('exchangedfeed', views.ExchangedFeedViewSet)
 router.register('exchangednutrient', views.ExchangedNutrientViewSet)
+router.register('exchangedsnack', views.ExchangedSnackViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,5 +32,6 @@ urlpatterns = [
 
     path('exchange_feed/', views.exchange_feed, name=""),
     path('exchange_nutrient/', views.exchange_nutrient, name=""),
+    path('exchange_snack/', views.exchange_snack, name=""),
 
 ]

@@ -28,6 +28,8 @@ class Feed(models.Model):
     def __str__(self):
         return self.name
 
+
+
 class Snack(models.Model):
     
     class Meta:
@@ -35,8 +37,17 @@ class Snack(models.Model):
         verbose_name_plural = "간식"
         
     name = models.CharField("간식 이름", max_length=50)
-    pass
-
+    calorie = models.CharField("칼로리(kcal/100g)", max_length=1000)
+    moisture = models.CharField("수분량(%)", max_length=1000)
+    crude_protein = models.CharField("조단백(%)", max_length=1000)
+    crude_fat = models.CharField("조지방(%)", max_length=1000)
+    crude_fiber = models.CharField("조섬유(%)", max_length=1000)
+    crude_ash = models.CharField("조회분(%)", max_length=1000)
+    calcium = models.CharField("칼슘(%)", max_length=1000)
+    phosphorus = models.CharField("인(%)", max_length=1000)
+    
+    def __str__(self):
+        return self.name
 
 
 class Nutrient(models.Model):
@@ -83,7 +94,7 @@ class ExchangedFeed(models.Model):
     types = models.CharField("분류", max_length=2, choices=TYPE_CHOICES)  
     # 칼로리 수분량 조단백 조지방 조섬유 조회분 칼슘 인
     calorie = models.CharField("칼로리(kcal)", max_length=1000)
-    moisture = models.CharField("수분량(g)", max_length=1000)
+    moisture = models.CharField("수분량(ml)", max_length=1000)
     crude_protein = models.CharField("조단백(g)", max_length=1000)
     crude_fat = models.CharField("조지방(g)", max_length=1000)
     crude_fiber = models.CharField("조섬유(g)", max_length=1000)
@@ -106,7 +117,31 @@ class ExchangedNutrient(models.Model):
     name = models.CharField("영양제 이름", max_length=50)
 
     calorie = models.CharField("칼로리(kcal)", max_length=1000)
-    moisture = models.CharField("수분량(g)", max_length=1000)
+    moisture = models.CharField("수분량(ml)", max_length=1000)
+    crude_protein = models.CharField("조단백(g)", max_length=1000)
+    crude_fat = models.CharField("조지방(g)", max_length=1000)
+    crude_fiber = models.CharField("조섬유(g)", max_length=1000)
+    crude_ash = models.CharField("조회분(g)", max_length=1000)
+    calcium = models.CharField("칼슘(g)", max_length=1000)
+    phosphorus = models.CharField("인(g)", max_length=1000)
+
+    def __str__(self):
+        return self.name
+
+
+
+
+
+class ExchangedSnack(models.Model):
+    
+    class Meta:
+        verbose_name = "간식 환산 - [1g당 성분양]"
+        verbose_name_plural = "간식 환산- [1g당 성분양]"
+
+    name = models.CharField("간식 이름", max_length=50)
+
+    calorie = models.CharField("칼로리(kcal)", max_length=1000)
+    moisture = models.CharField("수분량(ml)", max_length=1000)
     crude_protein = models.CharField("조단백(g)", max_length=1000)
     crude_fat = models.CharField("조지방(g)", max_length=1000)
     crude_fiber = models.CharField("조섬유(g)", max_length=1000)
