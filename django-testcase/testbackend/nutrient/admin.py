@@ -60,3 +60,6 @@ class ExchangedSnackAdmin(ImportExportMixin, admin.ModelAdmin):
     pass
 
 admin.site.register(ExchangedSnack, ExchangedSnackAdmin)
+
+
+

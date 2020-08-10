@@ -29,24 +29,35 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
-INSTALLED_APPS = [
+
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+]
+
+THIRD_PARTY_APPS = [
     'rest_framework',
-    'nutrient',
     'corsheaders',
     'import_export',
 ]
+
+LOCAL_APPS = [
+    'nutrient',
+    'datas',
+]
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
-       'https://petdy-test-frontend-tedhoon.endpoint.ainize.ai',
+    #    'https://petdy-test-frontend-tedhoon.endpoint.ainize.ai',
+        
        'http://petdy - ',
        'http://127.0.0.1:3000',
        'http://localhost:3000',    #React 도메인
