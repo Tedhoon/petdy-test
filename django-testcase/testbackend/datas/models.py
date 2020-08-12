@@ -63,7 +63,6 @@ class AgeRange(models.Model):
         return self.name
 
 
-
 class DogBreed(models.Model):
     class Meta:
         verbose_name = "품종 데이터"
