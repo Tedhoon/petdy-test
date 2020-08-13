@@ -15,23 +15,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from nutrient import views
+from nutrient import views as nutrient_views
+from datas import views as data_views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register('feed', views.FeedViewSet)
-router.register('nutrient', views.NutrientViewSet)
-router.register('snack', views.SnackViewSet)
-router.register('exchangedfeed', views.ExchangedFeedViewSet)
-router.register('exchangednutrient', views.ExchangedNutrientViewSet)
-router.register('exchangedsnack', views.ExchangedSnackViewSet)
+router.register('feed', nutrient_views.FeedViewSet)
+router.register('nutrient', nutrient_views.NutrientViewSet)
+router.register('snack', nutrient_views.SnackViewSet)
+router.register('exchangedfeed', nutrient_views.ExchangedFeedViewSet)
+router.register('exchangednutrient', nutrient_views.ExchangedNutrientViewSet)
+router.register('exchangedsnack', nutrient_views.ExchangedSnackViewSet)
+
+# datas #
+router.register('agerange', data_views.AgeRangeViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
 
-    path('exchange_feed/', views.exchange_feed, name=""),
-    path('exchange_nutrient/', views.exchange_nutrient, name=""),
-    path('exchange_snack/', views.exchange_snack, name=""),
+    path('exchange_feed/', nutrient_views.exchange_feed, name=""),
+    path('exchange_nutrient/', nutrient_views.exchange_nutrient, name=""),
+    path('exchange_snack/', nutrient_views.exchange_snack, name=""),
 
 ]

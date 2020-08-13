@@ -5,27 +5,27 @@ from .serializers import FeedSerializer, NutrientSerializer, SnackSerializer, Ex
 from rest_framework import viewsets 
 
 
-class FeedViewSet(viewsets.ModelViewSet):
+class FeedViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Feed.objects.all()
     serializer_class = FeedSerializer
 
-class NutrientViewSet(viewsets.ModelViewSet):
+class NutrientViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Nutrient.objects.all()
     serializer_class = NutrientSerializer
 
-class SnackViewSet(viewsets.ModelViewSet):
+class SnackViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Snack.objects.all()
     serializer_class = SnackSerializer
 
-class ExchangedFeedViewSet(viewsets.ModelViewSet):
+class ExchangedFeedViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ExchangedFeed.objects.all()
     serializer_class = ExchangedFeedSerializer
 
-class ExchangedNutrientViewSet(viewsets.ModelViewSet):
+class ExchangedNutrientViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ExchangedNutrient.objects.all()
     serializer_class = ExchangedNutrientSerializer
 
-class ExchangedSnackViewSet(viewsets.ModelViewSet):
+class ExchangedSnackViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ExchangedSnack.objects.all()
     serializer_class = ExchangedSnackSerializer
 
