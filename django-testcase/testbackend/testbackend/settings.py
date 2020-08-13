@@ -58,12 +58,12 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
     #    'https://petdy-test-frontend-tedhoon.endpoint.ainize.ai',
-        
-       'http://petdy - ',
-       'http://127.0.0.1:3000',
-       'http://localhost:3000',    #React 도메인
-       'http://127.0.0.1:8000',    #Django 도메인
-       'http://localhost:8000',
+        'http://13.209.88.207',
+        'http://petdy - ',
+        'http://127.0.0.1:3000',
+        'http://localhost:3000',    #React 도메인
+        'http://127.0.0.1:8000',    #Django 도메인
+        'http://localhost:8000',
 )
 
 
