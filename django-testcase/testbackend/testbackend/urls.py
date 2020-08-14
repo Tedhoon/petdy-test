@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from nutrient import views as nutrient_views
 from datas import views as data_views
+from personal import views as personal_views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
@@ -29,6 +30,12 @@ router.register('exchangedsnack', nutrient_views.ExchangedSnackViewSet)
 
 # datas #
 router.register('agerange', data_views.AgeRangeViewSet)
+
+
+# personal data #
+router.register('mypet', personal_views.MyPetViewSet)
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
