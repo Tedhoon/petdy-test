@@ -29,17 +29,18 @@ router.register('exchangednutrient', nutrient_views.ExchangedNutrientViewSet)
 router.register('exchangedsnack', nutrient_views.ExchangedSnackViewSet)
 
 # datas #
-router.register('agerange', data_views.AgeRangeViewSet)
-
+# router.register('agerange', data_views.AgeRangeViewSet)
 
 # personal data #
-router.register('mypet', personal_views.MyPetViewSet)
+# router.register('mypet', personal_views.MyPetViewSet)
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
+
+    path('mypet', personal_views.MyPetAPI),
 
     path('exchange_feed/', nutrient_views.exchange_feed, name=""),
     path('exchange_nutrient/', nutrient_views.exchange_nutrient, name=""),
