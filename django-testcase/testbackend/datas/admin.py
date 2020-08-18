@@ -31,7 +31,7 @@ class DogBreedAdmin(ImportExportMixin, admin.ModelAdmin):
 admin.site.register(DogBreed, DogBreedAdmin)
 
 class AgeRangeAdmin(ImportExportMixin, admin.ModelAdmin):
-    list_display = ('name', 'desc')
+    list_display = ('id', 'name', 'slug', 'desc')
     list_editable =  ('desc',)
     fields = ('name', 'slug', 'desc', 'min_age', 'max_age', 'disease', ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'm', 'l', 'n', 'o', 'p'))
     search_fields = ('name', )

@@ -6,7 +6,7 @@ from django.http import Http404
 from rest_framework.response import Response
 
 class AgeRangeViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = AgeRange.objects.all()
+    queryset = AgeRange.objects.all().order_by('-id')
     serializer_class = AgeRangeSerializer
 
 
