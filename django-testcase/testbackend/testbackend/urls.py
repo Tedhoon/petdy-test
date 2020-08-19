@@ -20,6 +20,12 @@ from datas import views as data_views
 from personal import views as personal_views
 from rest_framework.routers import DefaultRouter
 
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+
+
 router = DefaultRouter()
 router.register('feed', nutrient_views.FeedViewSet)
 router.register('nutrient', nutrient_views.NutrientViewSet)
@@ -47,4 +53,5 @@ urlpatterns = [
     path('exchange_nutrient/', nutrient_views.exchange_nutrient, name=""),
     path('exchange_snack/', nutrient_views.exchange_snack, name=""),
 
-]
+] 
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

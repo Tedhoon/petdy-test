@@ -16,7 +16,7 @@ class NutrientDataAdmin(ImportExportMixin, admin.ModelAdmin):
     list_display = ('name', 'desc', )
     # list_editable =  ('desc', )
     # fields = ('name', 'desc', )
-    search_fields = ('name', 'desc', 'disease')
+    search_fields = ('name', 'desc', )
     pass
 
 admin.site.register(NutrientData, NutrientDataAdmin)
@@ -33,7 +33,7 @@ admin.site.register(DogBreed, DogBreedAdmin)
 class AgeRangeAdmin(ImportExportMixin, admin.ModelAdmin):
     list_display = ('id', 'name', 'slug', 'desc')
     list_editable =  ('desc',)
-    fields = ('name', 'slug', 'desc', 'min_age', 'max_age', 'disease', ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'm', 'l', 'n', 'o', 'p'))
+    fields = ('name', 'slug', 'desc', 'min_age', 'max_age', ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'm', 'l', 'n', 'o', 'p'))
     search_fields = ('name', )
     pass
 
