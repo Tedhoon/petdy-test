@@ -20,7 +20,7 @@ class MyPetAPI(APIView):
         serializer = MyPetSerializer(data=request.data)
 
         if serializer.is_valid():
-            mypet = ''
+            mypet = None
             try:
                 mypet = MyPet.objects.get(
                         Q(owner=request.data['owner']) & 
@@ -28,7 +28,7 @@ class MyPetAPI(APIView):
                         )
             except:
                 pass
-                
+
             if mypet:
                 # qs가 있으면 수정으로 적용
                 mypet.owner = request.data['owner']
