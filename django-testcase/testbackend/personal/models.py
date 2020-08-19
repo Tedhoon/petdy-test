@@ -4,7 +4,7 @@ from datas.models import DogBreed
 
 
 def get_mypet_image_filename(instance, filename):
-    instance_id = instance.id
+    instance_id = instance.owner
     return f"mypet_images/{instance_id}/{filename}"
 
 

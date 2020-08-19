@@ -1,5 +1,4 @@
 from django.shortcuts import render
-# from rest_framework import viewsets 
 from .serializers import MyPetSerializer 
 from .models import MyPet
 from datas.models import DogBreed
@@ -16,9 +15,10 @@ class MyPetAPI(APIView):
         return Response(serializer.data)
 
     def post(self, request, format=None):
-        print(request.data)
+        # print("data", request.data)
         serializer = MyPetSerializer(data=request.data)
-
+        # print("files", request.FILES)
+        
         if serializer.is_valid():
             mypet = None
             try:
@@ -35,10 +35,11 @@ class MyPetAPI(APIView):
                 mypet.name = request.data['name']
                 mypet.age = request.data['age']
                 mypet.weight = request.data['weight']
+                mypet.image = request.FILES['image']
                 mypet.save()
             else:
                 # 없으면 object create
                 serializer.save()
-
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
